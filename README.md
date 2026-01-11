@@ -16,7 +16,7 @@ A Claude Code plugin that transforms your workflow to use persistent markdown fi
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-blue)](https://code.claude.com/docs/en/plugins)
 [![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://code.claude.com/docs/en/skills)
 [![Cursor Rules](https://img.shields.io/badge/Cursor-Rules-purple)](https://docs.cursor.com/context/rules-for-ai)
-[![Version](https://img.shields.io/badge/version-2.1.1-brightgreen)](https://github.com/OthmanAdi/planning-with-files/releases)
+[![Version](https://img.shields.io/badge/version-2.1.2-brightgreen)](https://github.com/OthmanAdi/planning-with-files/releases)
 
 ## Quick Install
 
@@ -42,7 +42,8 @@ See [docs/installation.md](docs/installation.md) for all installation methods.
 
 | Version | Features | Install |
 |---------|----------|---------|
-| **v2.1.1** (current) | Fix plugin template paths | `/plugin install planning-with-files@planning-with-files` |
+| **v2.1.2** (current) | Fix template cache issue (Issue #18) | `/plugin install planning-with-files@planning-with-files` |
+| **v2.1.1** | Fix plugin template paths | See [releases](https://github.com/OthmanAdi/planning-with-files/releases) |
 | **v2.1.0** | Claude Code v2.1 compatible, SessionStart hook, PostToolUse hook, user-invocable | See [releases](https://github.com/OthmanAdi/planning-with-files/releases) |
 | **v2.0.x** | Hooks, templates, scripts | See [releases](https://github.com/OthmanAdi/planning-with-files/releases) |
 | **v1.0.0** (legacy) | Core 3-file pattern | `git clone -b legacy` |
@@ -110,6 +111,8 @@ See [docs/quickstart.md](docs/quickstart.md) for the full 5-step guide.
 
 ```
 planning-with-files/
+├── templates/               # Root-level templates (for CLAUDE_PLUGIN_ROOT)
+├── scripts/                 # Root-level scripts (for CLAUDE_PLUGIN_ROOT)
 ├── docs/                    # Documentation
 │   ├── installation.md
 │   ├── quickstart.md
@@ -117,11 +120,15 @@ planning-with-files/
 │   ├── troubleshooting.md
 │   ├── cursor.md
 │   └── windows.md
-├── skills/
+├── planning-with-files/     # Plugin skill folder
+│   ├── SKILL.md
+│   ├── templates/
+│   └── scripts/
+├── skills/                  # Legacy skill folder
 │   └── planning-with-files/
-│       ├── SKILL.md         # Main skill definition
-│       ├── templates/       # File templates
-│       └── scripts/         # Helper scripts
+│       ├── SKILL.md
+│       ├── templates/
+│       └── scripts/
 ├── .claude-plugin/          # Plugin manifest
 ├── .cursor/                 # Cursor rules
 ├── CHANGELOG.md

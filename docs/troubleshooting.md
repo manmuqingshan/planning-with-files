@@ -4,6 +4,39 @@ Common issues and their solutions.
 
 ---
 
+## Templates not found in cache (after update)
+
+**Issue:** After updating to a new version, `/planning-with-files` fails with "template files not found in cache" or similar errors.
+
+**Why this happens:** Claude Code caches plugin files, and the cache may not refresh properly after an update.
+
+**Solutions:**
+
+### Solution 1: Clean reinstall (Recommended)
+
+```bash
+/plugin uninstall planning-with-files@planning-with-files
+/plugin marketplace add OthmanAdi/planning-with-files
+/plugin install planning-with-files@planning-with-files
+```
+
+### Solution 2: Clear Claude Code cache
+
+Restart Claude Code completely (close and reopen terminal/IDE).
+
+### Solution 3: Manual cache clear
+
+```bash
+# Find and remove cached plugin
+rm -rf ~/.claude/cache/plugins/planning-with-files
+```
+
+Then reinstall the plugin.
+
+**Note:** This was fixed in v2.1.2 by adding templates at the repo root level.
+
+---
+
 ## Planning files created in wrong directory
 
 **Issue:** When using `/planning-with-files`, the files (`task_plan.md`, `findings.md`, `progress.md`) are created in the skill installation directory instead of your project.

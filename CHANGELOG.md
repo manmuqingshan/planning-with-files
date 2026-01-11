@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.2] - 2026-01-11
+
+### Fixed
+
+- **Template Files Not Found in Cache** (Fixes #18)
+  - Root cause: `${CLAUDE_PLUGIN_ROOT}` resolves to repo root, but templates were only in subfolders
+  - Added `templates/` and `scripts/` directories at repo root level
+  - Now templates are accessible regardless of how `CLAUDE_PLUGIN_ROOT` resolves
+  - Works for both plugin installs and manual installs
+
+### Structure
+
+After this fix, templates exist in THREE locations for maximum compatibility:
+- `templates/` - At repo root (for `${CLAUDE_PLUGIN_ROOT}/templates/`)
+- `planning-with-files/templates/` - For plugin marketplace installs
+- `skills/planning-with-files/templates/` - For legacy `~/.claude/skills/` installs
+
+### Workaround for Existing Users
+
+If you still experience issues after updating:
+1. Uninstall: `/plugin uninstall planning-with-files@planning-with-files`
+2. Reinstall: `/plugin marketplace add OthmanAdi/planning-with-files`
+3. Install: `/plugin install planning-with-files@planning-with-files`
+
+---
+
 ## [2.1.1] - 2026-01-10
 
 ### Fixed
